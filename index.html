@@ -129,7 +129,7 @@ hr{border:none;border-top:1px solid var(--border);margin:30px 0}
 
 <div class="prog" id="prog"></div>
 
-<div class="fin" id="fin">
+<div class="fin" id="fin" style="display:none">
   <h3>Всё готово</h3>
   <p style="margin-bottom:0">Больше ничего делать не надо. Увидимся на встрече.</p>
 </div>
@@ -183,5 +183,43 @@ const p=document.getElementById('prog');
 if(done>0&&done<4)p.textContent='Сделано '+done+' из 4';
 if(done===4){p.textContent='';document.getElementById('fin').style.display='block';}
 </script>
+
+<!--
+════════════════════════════════════════════════════
+  КАК ВСТАВИТЬ ВИДЕО
+
+  Найди выше блок, помеченный «ВИДЕО», и замени
+  строку <div class="kwVideo-ph">[ здесь видео ]</div>
+  на один из вариантов.
+
+  YOUTUBE
+  Открой видео → Поделиться → Встроить → скопируй код.
+  Вставь его и добавь в тег iframe: style="width:100%;aspect-ratio:16/9;display:block;border:0"
+
+  <iframe src="https://www.youtube.com/embed/ВИДЕО_ID"
+    style="width:100%;aspect-ratio:16/9;display:block;border:0"
+    allowfullscreen></iframe>
+
+  RUTUBE
+  <iframe src="https://rutube.ru/play/embed/ВИДЕО_ID"
+    style="width:100%;aspect-ratio:16/9;display:block;border:0"
+    allowfullscreen></iframe>
+
+  VK ВИДЕО
+  Код бери целиком в разделе «Экспортировать» под видео,
+  затем добавь тот же style в тег iframe.
+
+  СВОЙ ФАЙЛ MP4
+  Залей mp4 в этот же репозиторий рядом с html-файлами,
+  затем:
+
+  <video controls playsinline preload="metadata"
+    style="width:100%;aspect-ratio:16/9;display:block;background:#000">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  Файл до 100 МБ. Для ролика на 2:40 этого достаточно.
+════════════════════════════════════════════════════
+-->
 </body>
 </html>
