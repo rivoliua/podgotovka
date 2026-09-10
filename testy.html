@@ -370,7 +370,7 @@ function pickS(i,v,el){
   prog();
 }
 function buildLEC(){
-  document.getElementById('kwLec').innerHTML=LEC.map((t,i)=>
+  document.getElementById('lec').innerHTML=LEC.map((t,i)=>
     `<div class="kwLec"><div class="lec-t">${i+1}. ${t}</div>
      <div class="lec-o">${LECOPT.map(o=>
        `<label onclick="pickL(${i},'${o.k}',this)"><input type="checkbox">${o.t}</label>`).join('')}
