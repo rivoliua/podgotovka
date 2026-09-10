@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Подготовка к встрече</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--off-white:#fafaf8;--white:#fff;--surface:#f5f4f0;--border:#e2dfd8;--text:#1a1916;--text-mid:#4a4740;
+--text-muted:#8a8780;--navy:#1c2b3a;--head:#1d4e8f;--navy-mid:#4a6680;--navy-pale:#e8f0f7;--gold:#b8962e;--gold-pale:#faf3e0;
+--sage:#6b9080;--sage-pale:#eaf3ee;--serif:'Cormorant Garamond','Times New Roman',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--off-white);color:var(--text);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.kwWrap{max-width:680px;margin:0 auto;padding:28px 20px 80px}
+h1{font-family:var(--serif);font-size:36px;font-weight:600;color:var(--head);line-height:1.12;margin-bottom:6px}
+.kwSub{font-family:var(--serif);font-size:22px;color:var(--navy-mid);margin-bottom:24px}
+p{margin-bottom:14px;color:var(--text-mid)}
+.kwLead{font-size:18px;color:var(--text)}
+.kwMuted{color:var(--text-muted);font-size:15px}
+strong{font-weight:500;color:var(--text)}
+
+.kwVideo{background:var(--navy);border-radius:14px;overflow:hidden;margin:22px 0 30px}
+.video-ph{aspect-ratio:16/9;background:linear-gradient(140deg,#1c2b3a,#2e4459);display:flex;
+align-items:center;justify-content:center;color:#fff;font-size:15px;opacity:.85}
+.video-cap{padding:15px 18px;color:#fff}
+.video-cap .t{font-size:16px;margin-bottom:4px}
+.video-cap .d{font-size:14px;opacity:.6}
+
+.steps{margin-top:8px}
+.kwStep{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;
+transition:all .18s;position:relative}
+.kwStep.on{background:var(--sage-pale);border-color:var(--sage)}
+.kwStep-top{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.kwMark{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;
+display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:var(--white);transition:all .18s}
+.kwStep.on .kwMark{background:var(--sage);border-color:var(--sage)}
+.kwStep-n{font-size:12px;letter-spacing:.1em;color:var(--gold)}
+.kwStep.on .kwStep-n{color:var(--sage)}
+.kwStep-t{font-family:var(--serif);font-size:23px;color:var(--head);line-height:1.2;margin-bottom:6px}
+.kwStep-meta{font-size:14px;color:var(--text-muted);margin-bottom:11px}
+.kwStep-d{font-size:16px;color:var(--text-mid);margin-bottom:15px;line-height:1.5}
+.kwSbtn{display:inline-block !important;padding:12px 26px !important;background:var(--navy) !important;color:#fff !important;text-decoration:none !important;
+border-radius:9px !important;font-size:16px !important;transition:opacity .15s}
+.kwSbtn:hover{opacity:.9}
+.kwStep.on .kwSbtn{background:var(--sage-pale) !important;color:var(--sage) !important;border:1px solid var(--sage)}
+.kwReq{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;letter-spacing:.04em;margin-left:auto}
+.req-must{background:var(--gold-pale);color:#7a6220}
+.req-want{background:var(--surface);color:var(--text-muted)}
+
+.kwBox{border-radius:12px;padding:20px;margin:24px 0}
+.box-calm{background:var(--surface);border:1px solid var(--border)}
+.box-gold{background:var(--gold-pale);border:1px solid var(--gold)}
+.kwBox p:last-child{margin-bottom:0}
+.kwBox h3{font-size:18px;font-weight:500;margin-bottom:10px}
+.prog{text-align:center;font-size:15px;color:var(--text-muted);margin:22px 0 6px}
+.fin{display:none;background:var(--sage-pale);border:1px solid var(--sage);border-radius:14px;padding:24px;margin:22px 0;text-align:center}
+.fin h3{font-family:var(--serif);font-size:24px;color:#3d5c4e;margin-bottom:8px}
+hr{border:none;border-top:1px solid var(--border);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="kwWrap">
+
+<h1>Подготовка к встрече</h1>
+<div class="kwSub">[дата], [время]</div>
+
+<p class="kwLead">Здесь четыре шага. Первый обязательный, остальные — очень желательные.</p>
+<p>Посмотри видео — я объясню, зачем каждый.</p>
+
+<div class="kwVideo">
+  <div class="video-ph">[ здесь видео ]</div>
+  <div class="video-cap">
+    <div class="t">Что нужно сделать до встречи</div>
+    <div class="d">2 минуты 40 секунд</div>
+  </div>
+</div>
+
+<div class="steps">
+
+<div class="kwStep" id="st1">
+  <div class="kwStep-top">
+    <div class="kwMark">✓</div>
+    <div class="kwStep-n">ШАГ 1</div>
+    <span class="kwReq req-must">ОБЯЗАТЕЛЬНО</span>
+  </div>
+  <div class="kwStep-t">Соглашение о работе</div>
+  <div class="kwStep-meta">3 минуты</div>
+  <div class="kwStep-d">Как устроена конфиденциальность, что происходит в нестандартных ситуациях и какие у тебя права. Одна страница, внизу галочка.</div>
+  <a class="kwSbtn" href="https://a59413s2.autoweboffice.ru/l/soglasheniep1">Открыть</a>
+</div>
+
+<div class="kwStep" id="st2">
+  <div class="kwStep-top">
+    <div class="kwMark">✓</div>
+    <div class="kwStep-n">ШАГ 2</div>
+    <span class="kwReq req-want">ОЧЕНЬ ЖЕЛАТЕЛЬНО</span>
+  </div>
+  <div class="kwStep-t">Анкета подготовки</div>
+  <div class="kwStep-meta">15 минут</div>
+  <div class="kwStep-d">Пять вопросов. Не тест, правильных ответов нет, любой можно пропустить. Я прочитаю до встречи — значит, не потратим первые полчаса на вводные.</div>
+  <a class="kwSbtn" href="https://a59413s2.autoweboffice.ru/l/anketap1">Открыть</a>
+</div>
+
+<div class="kwStep" id="st3">
+  <div class="kwStep-top">
+    <div class="kwMark">✓</div>
+    <div class="kwStep-n">ШАГ 3</div>
+    <span class="kwReq req-want">ЖЕЛАТЕЛЬНО</span>
+  </div>
+  <div class="kwStep-t">Короткие опросники</div>
+  <div class="kwStep-meta">12–15 минут</div>
+  <div class="kwStep-d">Пять коротких шкал. Результат увидишь сразу — человеческим языком, без баллов и без диагнозов. <strong>Это не диагностика</strong>, а способ увидеть картину в цифрах.</div>
+  <a class="kwSbtn" href="https://a59413s2.autoweboffice.ru/l/testyp1">Открыть</a>
+</div>
+
+<div class="kwStep" id="st4">
+  <div class="kwStep-top">
+    <div class="kwMark">✓</div>
+    <div class="kwStep-n">ШАГ 4</div>
+    <span class="kwReq req-want">ПРОЧИТАТЬ ПЕРЕД ВСТРЕЧЕЙ</span>
+  </div>
+  <div class="kwStep-t">Техническая памятка</div>
+  <div class="kwStep-meta">5 минут</div>
+  <div class="kwStep-d">Как подготовить пространство. Ничего сложного, но влияет на результат больше, чем кажется.</div>
+  <a class="kwSbtn" href="https://a59413s2.autoweboffice.ru/l/pamyatkap1">Открыть</a>
+</div>
+
+</div>
+
+<div class="prog" id="prog"></div>
+
+<div class="fin" id="fin">
+  <h3>Всё готово</h3>
+  <p style="margin-bottom:0">Больше ничего делать не надо. Увидимся на встрече.</p>
+</div>
+
+<div class="kwBox box-calm">
+<h3>Три вещи, которые стоит знать</h3>
+<p><strong>Порядок неважен.</strong> Начинай с чего удобно.</p>
+<p><strong>Можно не за один раз.</strong> Отметки и ответы сохраняются — вернёшься и продолжишь с того же места.</p>
+<p style="margin-bottom:0"><strong>Если сегодня нет сил</strong> — сделай только первый шаг и приходи как есть. Это ничего не сломает. Я лучше поговорю с тобой без анкеты, чем не поговорю вообще.</p>
+</div>
+
+<div class="kwBox box-gold">
+<h3>Куда всё отправлять</h3>
+<p>После каждого шага появится кнопка «скопировать». Можно отправить всё одним письмом в конце — не обязательно тремя отдельными.</p>
+<p style="margin-bottom:0">Почта: <strong>sergeykosovmrpl@mail.ru</strong></p>
+</div>
+
+<hr>
+
+<p class="kwMuted" style="text-align:center">Вопросы — на почту. Отвечаю сам.<br><strong>sergeykosovmrpl@mail.ru</strong></p>
+
+</div>
+<script>
+/* Дата и время встречи.
+   Вариант 1: подставить вручную ниже.
+   Вариант 2: передать в ссылке — index.html?d=15.09.2026&t=14:00
+   Если ничего не передано, подставляется сегодняшняя дата. */
+(function(){
+  const p=new URLSearchParams(location.search);
+  const now=new Date();
+  const d=p.get('d')||now.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
+  const t=p.get('t')||now.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+  const link=p.get('l')||'';
+  document.body.innerHTML=document.body.innerHTML
+    .split('[дата]').join(d).split('[время]').join(t);
+  if(link){
+    document.querySelectorAll('a').forEach(a=>{
+      if(a.textContent.trim()==='[ссылка]'){a.href=link;a.textContent=link;}
+    });
+  }
+})();
+</script>
+<script>
+const STEPS=[['st1','kosov_step1'],['st2','kosov_step2'],['st3','kosov_step3'],['st4','kosov_step4']];
+let done=0;
+STEPS.forEach(([id,key])=>{
+  let v=''; try{v=localStorage.getItem(key)||''}catch(e){}
+  if(v==='done'){document.getElementById(id).classList.add('on');done++;}
+});
+const p=document.getElementById('prog');
+if(done>0&&done<4)p.textContent='Сделано '+done+' из 4';
+if(done===4){p.textContent='';document.getElementById('fin').style.display='block';}
+</script>
+</body>
+</html>

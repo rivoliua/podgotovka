@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Опросники · подготовка к консультации</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff; --off-white:#fafaf8; --surface:#f5f4f0; --border:#e2dfd8;
+  --text:#1a1916; --text-mid:#4a4740; --text-muted:#8a8780;
+  --navy:#1c2b3a;--head:#1d4e8f; --navy-mid:#4a6680; --navy-pale:#e8f0f7;
+  --gold:#b8962e; --gold-pale:#faf3e0;
+  --sage:#6b9080; --sage-pale:#eaf3ee;
+  --alert:#c0614a; --alert-pale:#fdf6f5;
+  --serif:'Cormorant Garamond','Times New Roman',Georgia,serif;
+  --sans:'Jost',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--off-white);color:var(--text);font-family:var(--sans);font-weight:300;
+  font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+.kwWrap{max-width:680px;margin:0 auto;padding:24px 20px 80px}
+h1{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--head);line-height:1.15;margin-bottom:8px}
+h2{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--head);line-height:1.2;margin-bottom:10px}
+h3{font-size:17px;font-weight:500;color:var(--text);margin-bottom:8px}
+p{margin-bottom:14px;color:var(--text-mid)}
+.kwLead{font-size:18px;color:var(--text)}
+.kwMuted{color:var(--text-muted);font-size:15px}
+.center{text-align:center}
+.sec{display:none;animation:fade .3s ease}
+.sec.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* прогресс */
+.bar{position:sticky;top:0;z-index:10;background:var(--off-white);padding:14px 0 12px;margin:-24px -20px 20px;
+  padding-left:20px;padding-right:20px;border-bottom:1px solid var(--border)}
+.bar-track{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;background:var(--gold);width:0;transition:width .35s ease}
+.bar-txt{font-size:13px;color:var(--text-muted);margin-top:7px;letter-spacing:.02em}
+
+/* карточка вопроса */
+.q{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 18px 14px;margin-bottom:12px}
+.q-num{font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
+.q-txt{font-size:17px;color:var(--text);margin-bottom:14px;line-height:1.45}
+.opts{display:flex;flex-direction:column;gap:7px}
+.kwOpt{display:flex;align-items:flex-start;gap:11px;padding:10px 12px;border:1px solid var(--border);
+  border-radius:8px;cursor:pointer;background:var(--off-white);transition:all .15s;font-size:15px;color:var(--text-mid)}
+.kwOpt:hover{border-color:var(--navy-mid)}
+.kwOpt input{margin-top:3px;accent-color:var(--navy);flex-shrink:0}
+.kwOpt.sel{background:var(--navy-pale);border-color:var(--navy-mid);color:var(--text)}
+.opt-skip{background:var(--surface);color:var(--text-muted);font-size:14px}
+
+/* шкала 0-10 */
+.kwScale{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.kwScale button{flex:1;min-width:38px;padding:11px 0;border:1px solid var(--border);background:var(--off-white);
+  border-radius:7px;font-family:var(--sans);font-size:15px;color:var(--text-mid);cursor:pointer;transition:all .15s}
+.kwScale button:hover{border-color:var(--navy-mid)}
+.kwScale button.sel{background:var(--navy);border-color:var(--navy);color:#fff}
+.scale-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);margin-top:7px}
+
+/* LEC таблица */
+.kwLec{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.lec-t{font-size:16px;color:var(--text);margin-bottom:11px;line-height:1.4}
+.lec-o{display:flex;flex-wrap:wrap;gap:6px}
+.lec-o label{display:flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid var(--border);
+  border-radius:20px;font-size:14px;color:var(--text-mid);cursor:pointer;background:var(--off-white);transition:all .15s}
+.lec-o label:hover{border-color:var(--navy-mid)}
+.lec-o input{accent-color:var(--navy)}
+.lec-o label.sel{background:var(--gold-pale);border-color:var(--gold);color:var(--text)}
+
+/* кнопки */
+.kwBtn{display:block !important;width:100% !important;padding:16px !important;background:var(--navy) !important;color:#fff !important;border:none !important;border-radius:10px !important;
+  font-family:var(--sans);font-size:17px !important;font-weight:400;cursor:pointer;margin-top:22px;transition:opacity .15s}
+.kwBtn:hover{opacity:.9}
+.kwBtn:disabled{background:var(--border);color:var(--text-muted);cursor:not-allowed}
+.kwBghost{background:transparent;color:var(--text-muted);border:1px solid var(--border);margin-top:10px;font-size:15px}
+.kwBgold{background:var(--gold) !important}
+
+/* врезки */
+.kwBox{border-radius:12px;padding:20px;margin:20px 0}
+.box-stop{background:var(--gold-pale);border:1px solid var(--gold)}
+.box-alert{background:var(--alert-pale);border:1px solid var(--alert)}
+.box-calm{background:var(--surface);border:1px solid var(--border)}
+.kwBox h3{margin-bottom:10px}
+.kwBox p:last-child{margin-bottom:0}
+
+/* результат */
+.kwRes{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.res-h{font-family:var(--serif);font-size:21px;color:var(--head);margin-bottom:10px}
+.res-lvl{display:inline-block;padding:5px 13px;border-radius:20px;font-size:14px;margin-bottom:12px}
+.lvl-0{background:var(--sage-pale);color:#3d5c4e}
+.lvl-1{background:var(--navy-pale);color:var(--navy)}
+.lvl-2{background:var(--gold-pale);color:#7a6220}
+.lvl-3{background:var(--alert-pale);color:var(--alert)}
+
+/* блок терапевта */
+.tblock{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:24px}
+#tdata{width:100%;min-height:260px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;line-height:1.5;
+  padding:13px;border:1px solid var(--border);border-radius:8px;background:var(--white);color:var(--text-mid);resize:vertical}
+.kwCopied{color:var(--sage);font-size:14px;margin-top:9px;display:none}
+
+hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+.tag{font-size:12px;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="kwWrap">
+
+<div class="bar" id="bar" style="display:none">
+  <div class="bar-track"><div class="bar-fill" id="fill"></div></div>
+  <div class="bar-txt" id="btxt"></div>
+</div>
+
+<!-- ================= ВВЕДЕНИЕ ================= -->
+<section class="sec on" id="s-intro">
+  <h1>Короткие опросники</h1>
+  <p class="kwLead">Пять шкал. Двенадцать–пятнадцать минут.</p>
+
+  <div class="kwBox box-calm">
+    <h3>Сразу главное</h3>
+    <p><strong>Это не диагностика.</strong> Никто не поставит диагноз по галочкам в интернете, включая меня. Диагнозы ставит врач, на приёме и по другим основаниям.</p>
+    <p>Это способ увидеть картину в цифрах: где сейчас уровень тревоги, насколько это мешает жить и есть ли то, о чём в разговоре мы можем не успеть.</p>
+    <p style="margin-bottom:0"><strong>Любой вопрос можно пропустить.</strong> Пропущенный ничего не ломает.</p>
+  </div>
+
+  <p><strong>Результат ты увидишь сразу</strong> — человеческим языком, без баллов и без ярлыков. Отдельно сформируется блок для меня, который ты скопируешь и отправишь на почту.</p>
+
+  <p>Данные никуда не отправляются автоматически. Всё считается прямо в твоём браузере и остаётся у тебя, пока ты сам не решишь переслать.</p>
+
+  <p class="kwMuted">В середине будет блок про тяжёлые события. Перед ним я предупрежу отдельно.</p>
+
+  <button class="kwBtn" onclick="go('s-gad')">Начать</button>
+</section>
+
+<!-- ================= GAD-7 ================= -->
+<section class="sec" id="s-gad">
+  <div class="tag">ЧАСТЬ 1 ИЗ 5</div>
+  <h2>Как прошли последние две недели</h2>
+  <p>Как часто тебя беспокоило следующее?</p>
+  <div id="gad"></div>
+  <button class="kwBtn" onclick="go('s-phq')">Дальше</button>
+</section>
+
+<!-- ================= PHQ-9 ================= -->
+<section class="sec" id="s-phq">
+  <div class="tag">ЧАСТЬ 2 ИЗ 5</div>
+  <h2>И ещё о тех же двух неделях</h2>
+  <p>Как часто тебя беспокоило следующее?</p>
+  <div id="phq"></div>
+  <button class="kwBtn" onclick="go('s-sds')">Дальше</button>
+</section>
+
+<!-- ================= ШИХАН ================= -->
+<section class="sec" id="s-sds">
+  <div class="tag">ЧАСТЬ 3 ИЗ 5</div>
+  <h2>Насколько это мешает жить</h2>
+  <p>Три вопроса. Отметь от 0 до 10, насколько состояние мешает в каждой области.</p>
+  <div id="sds"></div>
+  <button class="kwBtn" onclick="go('s-stop')">Дальше</button>
+</section>
+
+<!-- ================= СТОП-ПРОТОКОЛ ================= -->
+<section class="sec" id="s-stop">
+  <h2>Дальше — про тяжёлые события</h2>
+
+  <div class="kwBox box-stop">
+    <h3>Прочитай, прежде чем продолжить</h3>
+    <p>Следующий блок — список тяжёлых событий. Нужно отметить, случалось ли что-то из этого с тобой.</p>
+    <p>Читать такой список само по себе может быть неприятно. Это нормальная реакция.</p>
+    <p style="margin-bottom:0"><strong>Отмечать всё необязательно. Любой пункт можно пропустить.</strong></p>
+  </div>
+
+  <h3 style="margin-top:24px">Если станет тяжело — остановись</h3>
+  <p>Поставь обе ноги на пол. Оглядись и найди три предмета, назови их про себя. Прислушайся: какие звуки есть вокруг прямо сейчас.</p>
+  <p>И скажи себе: <em>я здесь, сегодня, в этой комнате. То, о чём я читал, — не то, что происходит сейчас.</em></p>
+  <p class="kwMuted">Это не техника от тревоги. Это способ вернуться, когда внимание уехало.</p>
+
+  <div class="kwBox box-calm">
+    <p style="margin-bottom:0"><strong>Можно закрыть страницу и вернуться завтра.</strong> Или пропустить этот блок совсем — тогда результат соберётся по первым трём частям. Это нормальный вариант.</p>
+  </div>
+
+  <button class="kwBtn" onclick="go('s-lec')">Я готов, продолжить</button>
+  <button class="kwBtn kwBghost" onclick="skipTrauma()">Пропустить этот блок</button>
+</section>
+
+<!-- ================= LEC-5 ================= -->
+<section class="sec" id="s-lec">
+  <div class="tag">ЧАСТЬ 4 ИЗ 5</div>
+  <h2>Что случалось в жизни</h2>
+  <p>Ниже — список тяжёлых событий. По каждому отметь, что подходит. Можно отметить несколько вариантов или не отмечать ничего.</p>
+  <p class="kwMuted">Если ничего из списка не про тебя — это хорошо и это нормальный результат.</p>
+  <div id="lec"></div>
+  <button class="kwBtn" onclick="afterLec()">Дальше</button>
+</section>
+
+<!-- ================= ITQ ================= -->
+<section class="sec" id="s-itq">
+  <div class="tag">ЧАСТЬ 5 ИЗ 5</div>
+  <h2>Как это отзывается сейчас</h2>
+  <p>Ты отметил, что в жизни было тяжёлое. Вопросы ниже — о том, как это влияет на тебя <strong>в последний месяц</strong>.</p>
+
+  <div class="q" style="border-color:var(--gold)">
+    <div class="q-num">СОБЫТИЕ</div>
+    <div class="q-txt">Если хочешь, напиши в двух словах, о каком событии ты будешь думать, отвечая. Можно не писать.</div>
+    <input type="text" id="itq-ev" placeholder="Необязательно" style="width:100%;padding:11px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:16px;background:var(--off-white);color:var(--text)">
+    <div style="margin-top:12px">
+      <div class="q-txt" style="margin-bottom:9px">Когда это было?</div>
+      <div class="opts" id="itq-when"></div>
+    </div>
+  </div>
+
+  <h3 style="margin:22px 0 12px">Насколько тебя беспокоило это в последний месяц</h3>
+  <div id="itq"></div>
+  <button class="kwBtn" onclick="finish()">Посмотреть результат</button>
+</section>
+
+<!-- ================= РЕЗУЛЬТАТ ================= -->
+<section class="sec" id="s-res">
+  <div id="res-body"></div>
+</section>
+
+<!-- ================= КРИЗИСНЫЙ ЭКРАН ================= -->
+<section class="sec" id="s-crisis">
+  <h1>Остановись на минуту</h1>
+
+  <div class="kwBox box-alert">
+    <p class="kwLead" style="color:var(--text)">Ты отметил, что у тебя бывают мысли о том, что лучше было бы не жить или причинить себе вред.</p>
+    <p><strong>Спасибо, что ответил честно.</strong> Это трудно, и большинство людей на этом месте ставит ноль.</p>
+    <p style="margin-bottom:0">Я увижу это до нашей встречи и свяжусь с тобой.</p>
+  </div>
+
+  <h3>Что можно сделать прямо сейчас</h3>
+  <p><strong>Позвони кому-то живому.</strong> Другу, родственнику, любому, кто ответит. Не обязательно объяснять, что происходит, — можно просто попросить побыть рядом или поговорить.</p>
+  <p><strong>Если тебе страшно оставаться одному</strong> — обратись за очной неотложной помощью. Скорая — 112. Или ближайшее отделение неотложной психиатрической помощи.</p>
+  <p><strong>Не откладывай до утра и не жди нашей встречи.</strong> Это не слабость и не поражение. В таком состоянии обратиться за помощью — единственный разумный шаг.</p>
+
+  <div class="kwBox box-calm">
+    <p style="margin-bottom:0">Остальные результаты я собрал и передам тебе на встрече. Сейчас они не важнее того, что написано выше.</p>
+  </div>
+
+  <div class="tblock">
+    <h3>Отправь это мне на почту</h3>
+    <p class="kwMuted">Нажми кнопку, вставь в письмо и отправь на <strong>sergeykosovmrpl@mail.ru</strong>. Я прочитаю сразу.</p>
+    <textarea id="tdata-crisis" readonly></textarea>
+    <button class="kwBtn kwBgold" onclick="copyT('tdata-crisis')">Скопировать</button>
+    <div class="kwCopied" id="cop-crisis">Скопировано. Теперь вставь в письмо.</div>
+  </div>
+<p style="text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid var(--border)">
+<a href="https://a59413s2.autoweboffice.ru/l/podgotovkap1" style="color:var(--navy-mid);font-size:16px">← Ко всем шагам подготовки</a></p>
+</section>
+
+<script>
+/* ============ ДАННЫЕ ============ */
+const FREQ=['Совсем нет','Несколько дней','Больше половины дней','Почти каждый день'];
+const GAD=[
+ 'Нервозность, тревога или ощущение, что ты на взводе',
+ 'Не получается остановить беспокойство или взять его под контроль',
+ 'Слишком сильное беспокойство по разным поводам',
+ 'Трудно расслабиться',
+ 'Такое беспокойство, что трудно усидеть на месте',
+ 'Легко возникающее раздражение или досада',
+ 'Ощущение страха, будто может случиться что-то плохое'
+];
+const PHQ=[
+ 'Мало интереса или удовольствия от того, что делаешь',
+ 'Подавленность, угнетённость или ощущение безнадёжности',
+ 'Трудно засыпать, прерывистый сон или, наоборот, слишком долгий сон',
+ 'Усталость или упадок сил',
+ 'Плохой аппетит или переедание',
+ 'Плохое мнение о себе: ощущение, что ты неудачник или подвёл себя и близких',
+ 'Трудно сосредоточиться — например, при чтении или просмотре чего-либо',
+ 'Заторможенность в движениях и речи, заметная окружающим. Или наоборот — суетливость и неусидчивость',
+ 'Мысли о том, что лучше было бы не жить или что ты хочешь причинить себе вред'
+];
+const SDS=[
+ {t:'Работа или учёба',h:'Насколько состояние мешает работать или учиться'},
+ {t:'Общение с людьми',h:'Насколько мешает общаться, встречаться, поддерживать связи'},
+ {t:'Семья и дом',h:'Насколько мешает в семье и с домашними делами'}
+];
+const LEC=[
+ 'Стихийное бедствие — наводнение, ураган, землетрясение',
+ 'Пожар или взрыв',
+ 'Транспортная авария — на машине, поезде, самолёте',
+ 'Серьёзный несчастный случай на работе, дома или на отдыхе',
+ 'Контакт с опасными веществами — химикатами, радиацией',
+ 'Физическое нападение — тебя били, толкали, применяли силу',
+ 'Нападение с оружием или угроза оружием',
+ 'Сексуальное насилие или принуждение',
+ 'Другой нежеланный или неприятный сексуальный опыт',
+ 'Пребывание в зоне боевых действий или военного конфликта',
+ 'Лишение свободы — похищение, удержание против воли',
+ 'Опасное для жизни заболевание или травма',
+ 'Тяжёлые человеческие страдания, которые ты наблюдал',
+ 'Насильственная смерть другого человека',
+ 'Внезапная неожиданная смерть близкого',
+ 'Серьёзный вред другому человеку, причинённый тобой',
+ 'Любое другое очень тяжёлое или стрессовое событие'
+];
+const LECOPT=[
+ {k:'a',t:'Случилось со мной'},
+ {k:'b',t:'Был свидетелем'},
+ {k:'c',t:'Узнал о близком'},
+ {k:'d',t:'Сталкивался по работе'},
+ {k:'e',t:'Не уверен'},
+ {k:'f',t:'Не было'}
+];
+const ITQFREQ=['Совсем нет','Немного','Умеренно','Довольно сильно','Очень сильно'];
+const ITQ=[
+ {k:'Re1',t:'Тяжёлые сны, воспроизводящие часть этого опыта или явно связанные с ним'},
+ {k:'Re2',t:'Яркие образы или воспоминания, от которых кажется, что случившееся происходит снова здесь и сейчас'},
+ {k:'Av1',t:'Избегание внутренних напоминаний — мыслей, чувств, телесных ощущений'},
+ {k:'Av2',t:'Избегание внешних напоминаний — людей, мест, разговоров, предметов, ситуаций'},
+ {k:'Th1',t:'Повышенная готовность к опасности, обострённая бдительность'},
+ {k:'Th2',t:'Нервозность или повышенная пугливость'},
+ {k:'PSL',t:'За последний месяц это влияло на твои отношения или общение с людьми'},
+ {k:'PW',t:'За последний месяц это влияло на работу или работоспособность'},
+ {k:'PO',t:'За последний месяц это влияло на другие важные сферы — учёбу, воспитание детей, важные занятия'},
+ {k:'AD1',t:'Когда я расстроен, мне нужно много времени, чтобы успокоиться'},
+ {k:'AD2',t:'Я чувствую эмоциональное оцепенение или опустошённость'},
+ {k:'NSC1',t:'Я чувствую себя неудачником'},
+ {k:'NSC2',t:'Я чувствую себя никчёмным'},
+ {k:'DR1',t:'Я чувствую себя отстранённым или отчуждённым от людей'},
+ {k:'DR2',t:'Мне тяжело поддерживать эмоциональную близость с людьми'},
+ {k:'DSL',t:'За последний месяц это влияло на твои отношения или общение'},
+ {k:'DW',t:'За последний месяц это влияло на работу или работоспособность'},
+ {k:'DO',t:'За последний месяц это влияло на другие важные сферы жизни'}
+];
+const WHEN=['Меньше 6 месяцев назад','От 6 до 12 месяцев назад','От 1 до 5 лет назад','От 5 до 10 лет назад','От 10 до 20 лет назад','Больше 20 лет назад'];
+
+/* ============ СОСТОЯНИЕ ============ */
+const A={gad:{},phq:{},sds:{},lec:{},itq:{},when:null,ev:'',traumaSkipped:false};
+
+/* ============ ПОСТРОЕНИЕ ============ */
+function radios(host,items,opts,store,prefix){
+  const el=document.getElementById(host);
+  el.innerHTML=items.map((t,i)=>{
+    const txt=typeof t==='string'?t:t.t, key=typeof t==='string'?i:t.k;
+    return `<div class="q"><div class="q-num">${i+1} ИЗ ${items.length}</div><div class="q-txt">${txt}</div>
+      <div class="opts">${opts.map((o,j)=>
+        `<label class="kwOpt" onclick="pick('${store}','${key}',${j},this)"><input type="radio" name="${prefix}${key}">${o}</label>`
+      ).join('')}
+      <label class="kwOpt opt-skip" onclick="pick('${store}','${key}',null,this)"><input type="radio" name="${prefix}${key}">Пропустить вопрос</label>
+      </div></div>`;
+  }).join('');
+}
+function pick(store,key,val,el){
+  A[store][key]=val;
+  el.parentNode.querySelectorAll('.kwOpt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  el.querySelector('input').checked=true;
+  prog();
+}
+function buildSDS(){
+  document.getElementById('sds').innerHTML=SDS.map((s,i)=>
+    `<div class="q"><div class="q-num">${i+1} ИЗ 3</div><div class="q-txt">${s.t}</div>
+     <p class="kwMuted" style="margin-bottom:10px">${s.h}</p>
+     <div class="kwScale">${[...Array(11).keys()].map(n=>
+       `<button onclick="pickS(${i},${n},this)">${n}</button>`).join('')}</div>
+     <div class="scale-ends"><span>0 — совсем не мешает</span><span>10 — мешает полностью</span></div>
+     <div class="opts" style="margin-top:10px"><label class="kwOpt opt-skip" onclick="pickS(${i},null,this)"><input type="radio" name="sds${i}">Пропустить</label></div>
+     </div>`).join('');
+}
+function pickS(i,v,el){
+  A.sds[i]=v;
+  const card=el.closest('.q');
+  card.querySelectorAll('.kwScale button').forEach(b=>b.classList.remove('sel'));
+  card.querySelectorAll('.kwOpt').forEach(o=>o.classList.remove('sel'));
+  if(v===null){el.classList.add('sel');el.querySelector('input').checked=true;}
+  else el.classList.add('sel');
+  prog();
+}
+function buildLEC(){
+  document.getElementById('kwLec').innerHTML=LEC.map((t,i)=>
+    `<div class="kwLec"><div class="lec-t">${i+1}. ${t}</div>
+     <div class="lec-o">${LECOPT.map(o=>
+       `<label onclick="pickL(${i},'${o.k}',this)"><input type="checkbox">${o.t}</label>`).join('')}
+     </div></div>`).join('');
+}
+function pickL(i,k,el){
+  if(!A.lec[i])A.lec[i]=[];
+  const inp=el.querySelector('input');
+  if(k==='f'){
+    el.parentNode.querySelectorAll('label').forEach(l=>{if(l!==el){l.classList.remove('sel');l.querySelector('input').checked=false;}});
+    A.lec[i]=[];
+  } else {
+    const no=el.parentNode.querySelector('label:last-child');
+    no.classList.remove('sel'); no.querySelector('input').checked=false;
+    A.lec[i]=A.lec[i].filter(x=>x!=='f');
+  }
+  setTimeout(()=>{
+    if(inp.checked){el.classList.add('sel');if(!A.lec[i].includes(k))A.lec[i].push(k);}
+    else {el.classList.remove('sel');A.lec[i]=A.lec[i].filter(x=>x!==k);}
+    prog();
+  },0);
+}
+function buildWhen(){
+  document.getElementById('itq-when').innerHTML=WHEN.map((w,i)=>
+    `<label class="kwOpt" onclick="pickW(${i},this)"><input type="radio" name="itqw">${w}</label>`).join('');
+}
+function pickW(i,el){
+  A.when=i;
+  el.parentNode.querySelectorAll('.kwOpt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel'); el.querySelector('input').checked=true;
+}
+
+/* ============ НАВИГАЦИЯ ============ */
+const ORDER=['s-intro','s-gad','s-phq','s-sds','s-stop','s-lec','s-itq','s-res'];
+const LABELS={'s-gad':'Часть 1 из 5','s-phq':'Часть 2 из 5','s-sds':'Часть 3 из 5',
+  's-stop':'Перед следующим блоком','s-lec':'Часть 4 из 5','s-itq':'Часть 5 из 5'};
+function go(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.getElementById('bar').style.display=(id==='s-intro'||id==='s-res'||id==='s-crisis')?'none':'block';
+  document.getElementById('btxt').textContent=LABELS[id]||'';
+  prog();
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function prog(){
+  const cur=document.querySelector('.sec.on').id;
+  const i=ORDER.indexOf(cur);
+  document.getElementById('fill').style.width=Math.max(0,(i/6)*100)+'%';
+}
+function skipTrauma(){A.traumaSkipped=true;finish();}
+function afterLec(){
+  const any=Object.values(A.lec).some(v=>v&&v.length&&!(v.length===1&&v[0]==='f'));
+  if(any) go('s-itq'); else {A.traumaSkipped=true;finish();}
+}
+
+/* ============ ПОДСЧЁТ ============ */
+const sum=o=>Object.values(o).reduce((a,b)=>a+(typeof b==='number'?b:0),0);
+const cnt=o=>Object.values(o).filter(v=>typeof v==='number').length;
+function lvl(v,cuts){let l=0;cuts.forEach(c=>{if(v>=c)l++});return l}
+
+function finish(){
+  const g=sum(A.gad), p=sum(A.phq), s=sum(A.sds);
+  const gL=lvl(g,[5,10,15]), pL=lvl(p,[5,10,15]);
+  const risk = typeof A.phq[8]==='number' && A.phq[8]>0;
+
+  /* --- ITQ --- */
+  let itqRes=null;
+  if(!A.traumaSkipped && cnt(A.itq)>0){
+    const v=k=>typeof A.itq[k]==='number'?A.itq[k]:0;
+    const ptsd = (v('Re1')>=2||v('Re2')>=2) && (v('Av1')>=2||v('Av2')>=2) &&
+                 (v('Th1')>=2||v('Th2')>=2) && (v('PSL')>=2||v('PW')>=2||v('PO')>=2);
+    const dso  = (v('AD1')>=2||v('AD2')>=2) && (v('NSC1')>=2||v('NSC2')>=2) &&
+                 (v('DR1')>=2||v('DR2')>=2) && (v('DSL')>=2||v('DW')>=2||v('DO')>=2);
+    const Re=(v('Re1')+v('Re2'))/2, Av=(v('Av1')+v('Av2'))/2, Th=(v('Th1')+v('Th2'))/2;
+    const AD=(v('AD1')+v('AD2'))/2, NSC=(v('NSC1')+v('NSC2'))/2, DR=(v('DR1')+v('DR2'))/2;
+    const PTSD=(Re+Av+Th)/3, DSO=(AD+NSC+DR)/3;
+    let grp='Критерии не выполнены';
+    if(ptsd&&dso)grp='Оба критерия выполнены (ПТСР + нарушения Я)';
+    else if(ptsd)grp='Критерий ПТСР выполнен';
+    else if(dso)grp='Критерий нарушений Я выполнен';
+    itqRes={ptsd,dso,grp,Re,Av,Th,AD,NSC,DR,PTSD,DSO,CPTSD:(PTSD+DSO)/2};
+  }
+
+  /* --- LEC сводка --- */
+  const lecLines=[];
+  Object.keys(A.lec).forEach(i=>{
+    const v=A.lec[i];
+    if(v&&v.length&&!(v.length===1&&v[0]==='f')){
+      const marks=v.map(k=>LECOPT.find(o=>o.k===k).t).join(', ');
+      lecLines.push(`  ${Number(i)+1}. ${LEC[i]} — ${marks}`);
+    }
+  });
+
+  buildTherapist(g,p,s,gL,pL,risk,itqRes,lecLines);
+
+  if(risk){
+    document.getElementById('tdata-crisis').value=document.getElementById('tdata-src').value;
+    go('s-crisis');
+    return;
+  }
+  buildClient(g,p,s,gL,pL,itqRes,lecLines.length);
+  go('s-res');
+}
+
+/* --- блок для терапевта --- */
+function buildTherapist(g,p,s,gL,pL,risk,itq,lecLines){
+  const L=[];
+  L.push('РЕЗУЛЬТАТЫ ОПРОСНИКОВ · подготовка к консультации');
+  L.push('Дата заполнения: '+new Date().toLocaleString('ru-RU'));
+  L.push('');
+  if(risk){
+    L.push('!!! ВНИМАНИЕ: PHQ-9 пункт 9 > 0. Ответ: '+A.phq[8]+' («'+FREQ[A.phq[8]]+'»)');
+    L.push('!!! Клиенту показан кризисный экран вместо обычного результата.');
+    L.push('');
+  }
+  L.push('--- GAD-7 (тревога) ---');
+  L.push('Балл: '+g+' из 21 · отвечено '+cnt(A.gad)+' из 7');
+  L.push('Уровень: '+['минимальный','лёгкий','умеренный','выраженный'][gL]);
+  L.push('Пункты: '+GAD.map((_,i)=>typeof A.gad[i]==='number'?A.gad[i]:'—').join(' '));
+  L.push('');
+  L.push('--- PHQ-9 (настроение) ---');
+  L.push('Балл: '+p+' из 27 · отвечено '+cnt(A.phq)+' из 9');
+  L.push('Уровень: '+['минимальный','лёгкий','умеренный','выраженный'][pL]);
+  L.push('Пункты: '+PHQ.map((_,i)=>typeof A.phq[i]==='number'?A.phq[i]:'—').join(' '));
+  L.push('Пункт 9 (безопасность): '+(typeof A.phq[8]==='number'?A.phq[8]:'пропущен'));
+  L.push('');
+  L.push('--- Шкала Шихана (функционирование) ---');
+  L.push('Работа/учёба: '+(typeof A.sds[0]==='number'?A.sds[0]:'—')+
+        ' · Общение: '+(typeof A.sds[1]==='number'?A.sds[1]:'—')+
+        ' · Семья/дом: '+(typeof A.sds[2]==='number'?A.sds[2]:'—'));
+  L.push('Суммарно: '+s+' из 30');
+  L.push('');
+  L.push('--- LEC-5 (события) ---');
+  if(A.traumaSkipped && !lecLines.length){L.push('Блок пропущен клиентом.');}
+  else if(!lecLines.length){L.push('Ничего не отмечено.');}
+  else {L.push('Отмечено пунктов: '+lecLines.length); L.push(...lecLines);}
+  L.push('');
+  L.push('--- ITQ (МКБ-11) ---');
+  if(!itq){L.push('Не заполнялся.');}
+  else{
+    if(A.ev)L.push('Событие: '+A.ev);
+    if(A.when!==null)L.push('Давность: '+WHEN[A.when]);
+    L.push('ГРУППА: '+itq.grp);
+    L.push('Субшкалы ПТСР: Re='+itq.Re.toFixed(2)+' Av='+itq.Av.toFixed(2)+' Th='+itq.Th.toFixed(2)+' → PTSD='+itq.PTSD.toFixed(2));
+    L.push('Субшкалы DSO: AD='+itq.AD.toFixed(2)+' NSC='+itq.NSC.toFixed(2)+' DR='+itq.DR.toFixed(2)+' → DSO='+itq.DSO.toFixed(2));
+    L.push('CPTSD (средняя): '+itq.CPTSD.toFixed(2));
+    L.push('Пункты: '+ITQ.map(q=>q.k+'='+(typeof A.itq[q.k]==='number'?A.itq[q.k]:'—')).join(' '));
+  }
+  L.push('');
+  L.push('--- ЧТО ПРОВЕРИТЬ НА ВСТРЕЧЕ ---');
+  const notes=[];
+  if(risk)notes.push('• ПРИОРИТЕТ: пункт 9 PHQ-9 выше нуля. Начать с безопасности.');
+  if(g>=10&&p<10)notes.push('• Тревога выражена сильнее настроения — вероятно тревожный контур, не депрессивный.');
+  if(p>=10&&g<10)notes.push('• Настроение просело сильнее тревоги — уточнить, что первично.');
+  if(g>=10&&p>=10)notes.push('• Тревога и настроение выражены одновременно — уточнить, что было раньше.');
+  if(s>=15&&g<10&&p<10)notes.push('• Функционирование нарушено сильнее симптоматики — искать, где именно теряется жизнь.');
+  if(s<9&&(g>=10||p>=10))notes.push('• Симптоматика выражена, а функционирование сохранно — возможна высокая компенсация.');
+  if(typeof A.sds[1]==='number'&&A.sds[1]>=7)notes.push('• Максимум нарушения в общении — проверить страх оценки.');
+  if(itq&&itq.ptsd&&!itq.dso)notes.push('• Профиль ближе к ПТСР без нарушений Я. Порядок: устойчивость → переработка.');
+  if(itq&&itq.dso&&!itq.ptsd)notes.push('• Нарушения Я без полного ПТСР. Возможна длительная травматизация без одного события.');
+  if(itq&&itq.ptsd&&itq.dso)notes.push('• Профиль ближе к кПТСР. Самостоятельная работа не подходит — только сопровождение.');
+  if(itq&&itq.Av>=3)notes.push('• Высокое избегание — уточнить, насколько сузился круг жизни.');
+  if(lecLines.length>=4)notes.push('• Отмечено несколько типов событий — уточнить, какое ощущается основным.');
+  if(cnt(A.gad)<7||cnt(A.phq)<9)notes.push('• Часть вопросов пропущена — посмотреть, какие именно.');
+  if(!notes.length)notes.push('• Выраженных сигналов нет. Идти по обычной структуре встречи.');
+  L.push(...notes);
+  L.push('');
+  L.push('Скрининг не является диагнозом. Требует клинического подтверждения.');
+
+  let ta=document.getElementById('tdata-src');
+  if(!ta){ta=document.createElement('textarea');ta.id='tdata-src';ta.style.display='none';document.body.appendChild(ta);}
+  ta.value=L.join('\n');
+}
+
+/* --- блок для клиента --- */
+function buildClient(g,p,s,gL,pL,itq,lecCount){
+  const GT=[
+    ['Тревога в пределах обычного','По этой шкале сейчас спокойно. Это не значит, что всё в порядке во всём остальном, — просто конкретно тревога сейчас не на первом плане.'],
+    ['Тревога заметна, но невысокая','Она есть и её видно, но она пока не занимает всё пространство. Это хорошая точка, чтобы разобраться, — раньше, а не позже.'],
+    ['Тревога выражена','Она занимает существенную часть твоей жизни. Это не приговор и не диагноз — это описание того, где ты сейчас.'],
+    ['Тревога выражена сильно','Она сейчас занимает очень много. С этим точно стоит разбираться не в одиночку — и хорошо, что ты уже записался.']
+  ];
+  const PT=[
+    ['Настроение в пределах обычного','По этой шкале сейчас ровно.'],
+    ['Настроение немного снижено','Заметно, но некритично. Часто идёт рядом с тревогой — одно тянет другое.'],
+    ['Настроение снижено заметно','Это стоит обсудить на встрече отдельно. Тревога и сниженное настроение часто ходят вместе, и разбираться с ними нужно в определённом порядке.'],
+    ['Настроение снижено сильно','Об этом обязательно поговорим на встрече. Возможно, понадобится не только разговор — я скажу об этом прямо.']
+  ];
+  const parts=[];
+  parts.push(`<h1>Готово</h1><p class="kwLead">Вот что получилось. Без баллов и без ярлыков — только то, что имеет смысл.</p>`);
+
+  parts.push(`<div class="kwRes"><div class="res-h">Тревога</div>
+    <span class="res-lvl lvl-${gL}">${GT[gL][0]}</span><p>${GT[gL][1]}</p></div>`);
+
+  parts.push(`<div class="kwRes"><div class="res-h">Настроение</div>
+    <span class="res-lvl lvl-${pL}">${PT[pL][0]}</span><p>${PT[pL][1]}</p></div>`);
+
+  let sTxt;
+  if(s<=6)sTxt='Состояние почти не мешает повседневным делам. Это важный ресурс.';
+  else if(s<=15)sTxt='Состояние заметно мешает — не везде, но в чём-то определённо. На встрече посмотрим, где именно.';
+  else sTxt='Состояние мешает сильно и в нескольких областях сразу. Это то, с чего мы начнём разговор.';
+  parts.push(`<div class="kwRes"><div class="res-h">Насколько это мешает жить</div>
+    <span class="res-lvl lvl-${s<=6?0:(s<=15?2:3)}">${s<=6?'Мешает мало':(s<=15?'Мешает заметно':'Мешает сильно')}</span><p>${sTxt}</p></div>`);
+
+  if(itq){
+    let t;
+    if(itq.ptsd&&itq.dso)t='То, что было, до сих пор отзывается — и в виде возвращающихся переживаний, и в том, как ты относишься к себе и к людям. Это важная информация, и мы разберём её на встрече. Здесь я ничего называть не буду: такие вещи не определяются по опроснику.';
+    else if(itq.ptsd)t='То, что было, до сих пор возвращается — образами, реакциями, состоянием. Это разбирается, но в определённом порядке. Об этом на встрече.';
+    else if(itq.dso)t='Само событие сейчас отзывается не так сильно, но заметно другое — то, как ты относишься к себе и как переносишь близость с людьми. Это тоже про пережитое, просто проявляется иначе.';
+    else t='Ответы не складываются в устойчивую картину по этой шкале. Это хороший результат, и он не отменяет того, что тебе может быть тяжело.';
+    parts.push(`<div class="kwRes"><div class="res-h">Про то, что было</div><p>${t}</p></div>`);
+  } else if(lecCount===0){
+    parts.push(`<div class="kwRes"><div class="res-h">Про то, что было</div>
+      <p>Ты не отметил тяжёлых событий — или пропустил этот блок. И то, и другое нормально.</p></div>`);
+  }
+
+  parts.push(`<div class="kwBox box-calm"><h3>Что с этим делать сейчас</h3>
+    <p>Ничего. Правда.</p>
+    <p>Эти цифры — не задание и не повод что-то в себе менять до встречи. Они нужны, чтобы мы не тратили время на выяснение того, что уже можно выяснить.</p>
+    <p style="margin-bottom:0"><strong>И главное: не делай из этого вывод о себе.</strong> Опросник описывает две недели, а не твой характер и не то, какой ты человек.</p></div>`);
+
+  parts.push(`<div class="kwBox box-stop"><h3>Если стало тяжело от прочитанного</h3>
+    <p>Поставь обе ноги на пол. Найди вокруг три предмета и назови их про себя. Прислушайся к звукам.</p>
+    <p style="margin-bottom:0">Ты здесь, сегодня, в этой комнате.</p></div>`);
+
+  parts.push(`<div class="tblock"><h3>Последний шаг — отправь результат мне</h3>
+    <p class="kwMuted">Нажми кнопку, вставь в письмо и отправь на <strong>sergeykosovmrpl@mail.ru</strong>. Я посмотрю до встречи.</p>
+    <textarea id="tdata" readonly></textarea>
+    <button class="kwBtn kwBgold" onclick="copyT('tdata')">Скопировать для отправки</button>
+    <div class="kwCopied" id="cop">Скопировано. Теперь вставь в письмо.</div></div>`);
+
+  parts.push(`<p class="kwMuted center" style="margin-top:26px">Скрининг не является диагнозом.<br>Диагнозы ставит врач, на приёме и по другим основаниям.</p>`);
+
+  document.getElementById('res-body').innerHTML=parts.join('');
+  document.getElementById('tdata').value=document.getElementById('tdata-src').value;
+}
+
+function copyT(id){
+  const ta=document.getElementById(id);
+  ta.select(); ta.setSelectionRange(0,999999);
+  try{
+    navigator.clipboard.writeText(ta.value).catch(()=>document.execCommand('copy'));
+  }catch(e){document.execCommand('copy');}
+  const c=document.getElementById(id==='tdata'?'cop':'cop-crisis');
+  c.style.display='block';
+}
+
+/* ============ СТАРТ ============ */
+radios('gad',GAD,FREQ,'gad','g');
+radios('phq',PHQ,FREQ,'phq','p');
+buildSDS();
+buildLEC();
+buildWhen();
+radios('itq',ITQ,ITQFREQ,'itq','i');
+document.getElementById('itq-ev').addEventListener('input',e=>A.ev=e.target.value);
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анкета подготовки к встрече</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--off-white:#fafaf8;--white:#fff;--surface:#f5f4f0;--border:#e2dfd8;--text:#1a1916;--text-mid:#4a4740;
+--text-muted:#8a8780;--navy:#1c2b3a;--head:#1d4e8f;--navy-mid:#4a6680;--navy-pale:#e8f0f7;--gold:#b8962e;--gold-pale:#faf3e0;
+--sage:#6b9080;--sage-pale:#eaf3ee;--serif:'Cormorant Garamond','Times New Roman',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--off-white);color:var(--text);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.kwWrap{max-width:680px;margin:0 auto;padding:28px 20px 80px}
+h1{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--head);line-height:1.15;margin-bottom:8px}
+.kwSub{font-family:var(--serif);font-size:20px;color:var(--navy-mid);margin-bottom:22px;font-style:italic}
+h3{font-size:17px;font-weight:500;margin-bottom:8px}
+p{margin-bottom:14px;color:var(--text-mid)}
+.kwLead{font-size:18px;color:var(--text)}
+.kwMuted{color:var(--text-muted);font-size:15px}
+strong{font-weight:500;color:var(--text)}
+.kwBox{border-radius:12px;padding:18px;margin:18px 0}
+.box-calm{background:var(--surface);border:1px solid var(--border)}
+.box-gold{background:var(--gold-pale);border:1px solid var(--gold)}
+.kwBox p:last-child{margin-bottom:0}
+.q{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.q-num{font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:7px}
+.q-t{font-family:var(--serif);font-size:22px;color:var(--head);margin-bottom:10px;line-height:1.25}
+.q-h{font-size:15px;color:var(--text-muted);margin-bottom:14px}
+.sub-l{font-size:14px;color:var(--text-muted);margin:14px 0 6px;letter-spacing:.02em}
+textarea{width:100%;min-height:110px;padding:13px;border:1px solid var(--border);border-radius:8px;
+background:var(--off-white);font-family:var(--sans);font-size:16px;font-weight:300;line-height:1.55;
+color:var(--text);resize:vertical}
+textarea:focus{outline:none;border-color:var(--navy-mid);background:var(--white)}
+textarea.sm{min-height:64px}
+.kwBtn{display:block !important;width:100% !important;padding:16px !important;background:var(--navy) !important;color:#fff !important;border:none !important;border-radius:10px !important;
+font-family:var(--sans);font-size:17px !important;cursor:pointer;margin-top:20px;transition:opacity .15s}
+.kwBtn:hover{opacity:.9}
+.kwBgold{background:var(--gold) !important}
+.kwDone{display:none;background:var(--sage-pale);border:1px solid var(--sage);border-radius:12px;padding:22px;margin-top:24px}
+.kwDone h3{color:#3d5c4e;margin-top:0}
+#out{min-height:220px;font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--white);margin-top:12px}
+.kwCopied{color:var(--sage);font-size:14px;margin-top:9px;display:none}
+.save{font-size:13px;color:var(--text-muted);text-align:center;margin-top:10px;height:16px}
+hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+</style>
+</head>
+<body>
+<div class="kwWrap">
+
+<h1>Подготовка к нашей встрече</h1>
+<div class="kwSub">Пять вопросов, которые помогут сразу работать с тем, что важно</div>
+
+<p class="kwLead">Этот документ — не формальность и не тест.</p>
+
+<p>Когда ты отвечаешь на эти вопросы, ты уже начинаешь думать о своей ситуации по-другому. Структурно. Наедине с собой — без спешки и без необходимости сразу объяснять что-то вслух.</p>
+
+<p>Многие пишут мне после заполнения: «я уже кое-что понял, пока отвечал». Это нормально.</p>
+
+<div class="kwBox box-calm">
+<p><strong>Нет правильных и неправильных ответов.</strong> Пиши своими словами, без украшений.</p>
+<p><strong>Любой вопрос можно пропустить.</strong> Пропущенный вопрос ничего не ломает.</p>
+<p style="margin-bottom:0"><strong>Около пятнадцати минут.</strong> Можно не за один раз — ответы сохраняются в браузере.</p>
+</div>
+
+<p>Я прочитаю твои ответы до встречи — значит, мы сразу идём вглубь.</p>
+
+<hr>
+
+<div class="q">
+<div class="q-num">ВОПРОС 1</div>
+<div class="q-t">С чем ты приходишь?</div>
+<div class="q-h">Опиши своими словами, что сейчас происходит. Не нужно ставить диагноз и искать правильные слова. Просто опиши, как это выглядит в твоей жизни: что ты чувствуешь, когда это проявляется, как часто, как давно началось, на что влияет.</div>
+<textarea id="q1" placeholder="Твой ответ"></textarea>
+</div>
+
+<div class="q">
+<div class="q-num">ВОПРОС 2</div>
+<div class="q-t">Что ты хочешь взять из нашей встречи?</div>
+<div class="q-h">Представь, что встреча закончилась. Что должно было произойти, чтобы ты сказал себе — да, это было полезно? Понимание, конкретный шаг, ясность, план — что угодно, что важно именно тебе.</div>
+<textarea id="q2" placeholder="Твой ответ"></textarea>
+</div>
+
+<div class="q">
+<div class="q-num">ВОПРОС 3</div>
+<div class="q-t">Что ты уже пробовал?</div>
+<div class="q-h">Это важная информация: она показывает, что уже работало в твоём случае и в какую сторону точно не стоит идти.</div>
+<div class="sub-l">ЧТО ПОМОГАЛО ХОТЯ БЫ НЕМНОГО, ДАЖЕ ВРЕМЕННО</div>
+<textarea id="q3a" class="sm" placeholder="Твой ответ"></textarea>
+<div class="sub-l">ЧТО ТОЧНО НЕ ПОМОГЛО ИЛИ СДЕЛАЛО ХУЖЕ</div>
+<textarea id="q3b" class="sm" placeholder="Твой ответ"></textarea>
+</div>
+
+<div class="q">
+<div class="q-num">ВОПРОС 4</div>
+<div class="q-t">Твои ресурсы</div>
+<div class="q-h">Знаю, что вопрос может показаться странным, когда всё тяжело. Но именно сейчас он важен: мы будем опираться на то, что уже есть, а не строить всё с нуля.</div>
+<div class="sub-l">ТВОИ СИЛЬНЫЕ СТОРОНЫ</div>
+<textarea id="q4a" class="sm" placeholder="Твой ответ"></textarea>
+<div class="sub-l">ЛЮДИ, КОТОРЫЕ ПОДДЕРЖИВАЮТ</div>
+<textarea id="q4b" class="sm" placeholder="Твой ответ"></textarea>
+<div class="sub-l">СЛУЧАЙ, КОГДА ТЫ СПРАВИЛСЯ С ЧЕМ-ТО ТЯЖЁЛЫМ — И ЧТО ТОГДА ПОМОГЛО</div>
+<textarea id="q4c" class="sm" placeholder="Твой ответ"></textarea>
+</div>
+
+<div class="q">
+<div class="q-num">ВОПРОС 5</div>
+<div class="q-t">Что важно знать до встречи?</div>
+<div class="q-h">Что-то из прошлого. Особенности того, как ты реагируешь в разговоре. Что тебе важно в работе с психологом. Чего боишься или чего точно не хочешь. Поле для всего, что не вошло в предыдущие вопросы.</div>
+<textarea id="q5" placeholder="Твой ответ"></textarea>
+<p class="kwMuted" style="margin-top:12px;margin-bottom:0">Всё, что ты напишешь, конфиденциально.</p>
+</div>
+
+<div class="q" style="border-color:var(--gold)">
+<div class="q-num">И ЕЩЁ ОДНО</div>
+<div class="q-t">Принимаешь ли ты сейчас препараты, назначенные врачом?</div>
+<div class="q-h">Это не про оценку — это про безопасность. Если да, напиши какие. Ничего отменять не нужно, и я не даю рекомендаций по лекарствам.</div>
+<textarea id="q6" class="sm" placeholder="Твой ответ"></textarea>
+</div>
+
+<button class="kwBtn" onclick="fin()">Готово, собрать ответы</button>
+<div class="save" id="save"></div>
+
+<div class="kwDone" id="done">
+<h3>Спасибо, что заполнил</h3>
+<p>Осталось отправить. Нажми кнопку, вставь в письмо и отправь на <strong>sergeykosovmrpl@mail.ru</strong>.</p>
+<p>Я прочитаю внимательно — не по диагонали. Это основа нашей работы.</p>
+<textarea id="out" readonly></textarea>
+<button class="kwBtn kwBgold" onclick="cp()">Скопировать ответы</button>
+<div class="kwCopied" id="cop">Скопировано. Теперь вставь в письмо.</div>
+<p class="kwMuted" style="margin-top:18px;margin-bottom:0">Можно отправить одним письмом вместе с подтверждением соглашения и результатами опросников.</p>
+</div>
+
+<p style="text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid var(--border)">
+<a href="https://a59413s2.autoweboffice.ru/l/podgotovkap1" style="color:var(--navy-mid);font-size:16px">← Ко всем шагам подготовки</a></p>
+</div>
+<script>
+const IDS=['q1','q2','q3a','q3b','q4a','q4b','q4c','q5','q6'];
+IDS.forEach(id=>{
+  const el=document.getElementById(id);
+  try{const v=localStorage.getItem('kosov_anketa_'+id); if(v)el.value=v;}catch(e){}
+  el.addEventListener('input',()=>{
+    try{localStorage.setItem('kosov_anketa_'+id,el.value)}catch(e){}
+    const s=document.getElementById('save');
+    s.textContent='Сохранено'; clearTimeout(window._t);
+    window._t=setTimeout(()=>s.textContent='',1600);
+  });
+});
+const V=id=>{const v=document.getElementById(id).value.trim();return v||'— пропущено —'};
+function fin(){
+  const L=[];
+  L.push('АНКЕТА ПОДГОТОВКИ К ВСТРЕЧЕ');
+  L.push('Заполнено: '+new Date().toLocaleString('ru-RU'));
+  L.push('');
+  L.push('1. С ЧЕМ ПРИХОЖУ');
+  L.push(V('q1')); L.push('');
+  L.push('2. ЧТО ХОЧУ ВЗЯТЬ ИЗ ВСТРЕЧИ');
+  L.push(V('q2')); L.push('');
+  L.push('3. ЧТО УЖЕ ПРОБОВАЛ');
+  L.push('  Помогало: '+V('q3a'));
+  L.push('  Не помогло: '+V('q3b')); L.push('');
+  L.push('4. РЕСУРСЫ');
+  L.push('  Сильные стороны: '+V('q4a'));
+  L.push('  Поддержка: '+V('q4b'));
+  L.push('  Справлялся раньше: '+V('q4c')); L.push('');
+  L.push('5. ЧТО ВАЖНО ЗНАТЬ');
+  L.push(V('q5')); L.push('');
+  L.push('ПРЕПАРАТЫ, НАЗНАЧЕННЫЕ ВРАЧОМ');
+  L.push(V('q6'));
+  document.getElementById('out').value=L.join('\n');
+  try{localStorage.setItem('kosov_step2','done')}catch(e){}
+  document.getElementById('kwDone').style.display='block';
+  document.getElementById('kwDone').scrollIntoView({behavior:'smooth'});
+}
+function cp(){
+  const t=document.getElementById('out'); t.select(); t.setSelectionRange(0,999999);
+  try{navigator.clipboard.writeText(t.value).catch(()=>document.execCommand('copy'))}catch(e){document.execCommand('copy')}
+  document.getElementById('cop').style.display='block';
+}
+</script>
+</body>
+</html>

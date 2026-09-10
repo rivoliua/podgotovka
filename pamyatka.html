@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как подготовиться к встрече</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--off-white:#fafaf8;--white:#fff;--surface:#f5f4f0;--border:#e2dfd8;--text:#1a1916;--text-mid:#4a4740;
+--text-muted:#8a8780;--navy:#1c2b3a;--head:#1d4e8f;--navy-mid:#4a6680;--navy-pale:#e8f0f7;--gold:#b8962e;--gold-pale:#faf3e0;
+--sage:#6b9080;--sage-pale:#eaf3ee;--serif:'Cormorant Garamond','Times New Roman',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--off-white);color:var(--text);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.kwWrap{max-width:680px;margin:0 auto;padding:28px 20px 80px}
+h1{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--head);line-height:1.15;margin-bottom:8px}
+h2{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--head);margin:32px 0 14px}
+p{margin-bottom:14px;color:var(--text-mid)}
+.kwSub{font-family:var(--serif);font-size:20px;color:var(--navy-mid);margin-bottom:22px;font-style:italic}
+.kwLead{font-size:18px;color:var(--text)}
+.kwMuted{color:var(--text-muted);font-size:15px}
+strong{font-weight:500;color:var(--text)}
+.kwMeet{background:var(--navy);color:#fff;border-radius:12px;padding:20px;margin-bottom:24px}
+.kwMeet .lbl{font-size:12px;letter-spacing:.12em;opacity:.6;margin-bottom:6px}
+.kwMeet .when{font-family:var(--serif);font-size:26px;margin-bottom:12px}
+.kwMeet a{color:#fff;word-break:break-all;font-size:15px;opacity:.85}
+.kwItem{display:flex;align-items:flex-start;gap:13px;background:var(--white);border:1px solid var(--border);
+border-radius:10px;padding:15px;margin-bottom:9px;cursor:pointer;transition:all .15s}
+.kwItem:hover{border-color:var(--navy-mid)}
+.kwItem.on{background:var(--sage-pale);border-color:var(--sage)}
+.kwItem.on .it{text-decoration:line-through;opacity:.55}
+.kwItem input{margin-top:4px;accent-color:var(--sage);width:19px;height:19px;flex-shrink:0}
+.it{font-size:16px;color:var(--text);line-height:1.4}
+.ih{font-size:14px;color:var(--text-muted);margin-top:5px;line-height:1.45}
+.kwBox{border-radius:12px;padding:18px;margin:20px 0}
+.box-gold{background:var(--gold-pale);border:1px solid var(--gold)}
+.box-calm{background:var(--surface);border:1px solid var(--border)}
+.kwBox p:last-child{margin-bottom:0}
+.kwBox h3{font-size:17px;font-weight:500;margin-bottom:9px}
+hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.cnt{font-size:14px;color:var(--text-muted);text-align:center;margin-top:16px}
+.fin{background:var(--sage-pale);border:1px solid var(--sage);border-radius:12px;padding:20px;margin-top:22px;display:none}
+.fin h3{color:#3d5c4e;margin-bottom:8px;font-size:19px;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<div class="kwWrap">
+
+<h1>Как подготовиться</h1>
+<div class="kwSub">Пятнадцать минут подготовки меняют качество разговора</div>
+
+<div class="kwMeet">
+<div class="lbl">НАША ВСТРЕЧА</div>
+<div class="when">[дата], [время]</div>
+<div class="lbl" style="margin-top:14px">ССЫЛКА</div>
+<a href="#">[ссылка]</a>
+</div>
+
+<p class="kwLead">Подготовка займёт немного, но она важна.</p>
+<p>Когда ничего не отвлекает — ни звонки, ни домашние, ни плохой звук — ты можешь полностью сосредоточиться на разговоре. Именно в этом сосредоточении происходит главное.</p>
+
+<p class="kwMuted">Отмечай сделанное — отметки сохранятся, если закроешь страницу и вернёшься.</p>
+
+<h2>За день до встречи</h2>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="d1">
+<span><span class="it">Проверить, что программа установлена и работает</span>
+<span class="ih">Открой её, обнови до последней версии. Лучше заранее, а не за пять минут до начала.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="d2">
+<span><span class="it">Проверить камеру и микрофон</span>
+<span class="ih">Сделай тестовый звонок — эта функция есть в настройках.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="d3">
+<span><span class="it">Поставить устройство на зарядку</span>
+<span class="ih">Девяносто минут — это долго, и обрыв из-за севшей батареи обидно.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="d4">
+<span><span class="it">Найти тихое место</span>
+<span class="ih">Идеально — отдельная комната с закрытой дверью. Если невозможно — место, где тебя точно не побеспокоят полтора часа. Кафе, машина в потоке и улица не подойдут: фоновый шум и люди рядом делают невозможным то, что нам нужно сделать.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="d5">
+<span><span class="it">Предупредить домашних</span>
+<span class="ih">Не нужно объяснять детали — просто попроси полтора часа тишины. Если дома дети, постарайся, чтобы кто-то побыл с ними.</span></span></label>
+
+<div class="kwBox box-gold">
+<h3>Камера обязательна</h3>
+<p>Не для формальности: живой визуальный контакт меняет качество работы. Когда я вижу тебя — я вижу больше, чем в словах. Когда ты видишь меня — легче говорить.</p>
+</div>
+
+<h2>В день встречи, за десять минут</h2>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="h1">
+<span><span class="it">Выключить уведомления</span>
+<span class="ih">На телефоне и на компьютере — звонки, сообщения, почта, мессенджеры. Всё это подождёт полтора часа. Твоя ситуация ждала дольше.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="h2">
+<span><span class="it">Приготовить воду</span>
+<span class="ih">Во время разговора о важном горло иногда пересыхает.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="h3">
+<span><span class="it">Взять бумагу и ручку</span>
+<span class="ih">В конце встречи мы будем составлять план. Записывать от руки полезно — так лучше запоминается.</span></span></label>
+
+<label class="kwItem" onclick="t(this)"><input type="checkbox" data-k="h4">
+<span><span class="it">Подключиться за три-пять минут до начала</span>
+<span class="ih">Не секунда в секунду: это даёт время убедиться, что связь работает, и начать спокойно.</span></span></label>
+
+<h2>Для твоего удобства</h2>
+
+<p><strong>Свет.</strong> Сядь лицом к источнику света — к окну или к лампе. Не спиной к окну, иначе я буду видеть тёмный силуэт.</p>
+<p><strong>Камера на уровне глаз.</strong> Если она смотрит снизу вверх, ракурс неудобен обоим. Подложи под ноутбук пару книг.</p>
+<p><strong>Наушники,</strong> если есть. Звук будет лучше — и тебе, и мне. Встроенный микрофон часто даёт эхо.</p>
+<p><strong>Удобное место,</strong> где можно спокойно просидеть полтора часа. Лежать не стоит: снижает концентрацию и клонит в сон.</p>
+<p><strong>Температура.</strong> Звучит банально, но физический дискомфорт незаметно забирает ресурс, нужный для разговора.</p>
+
+<h2>Если что-то пойдёт не так</h2>
+
+<p><strong>Связь прервалась.</strong> Напиши мне на почту — отвечу сразу, переподключимся по той же ссылке. Если не выйдет за пять минут, позвоню на номер, который ты указал при записи. Держи телефон рядом.</p>
+<p><strong>Не можешь подключиться.</strong> Напиши сразу, разберёмся.</p>
+<p><strong>Нужно перенести.</strong> Не позднее чем за 24 часа — по правилам из оферты.</p>
+<p><strong>Стало слишком много во время встречи.</strong> В любой момент можешь сказать «стоп»: если нужна пауза, если что-то стало тяжело, если хочешь сменить направление. Это будет услышано.</p>
+
+<hr>
+
+<div class="kwBox box-calm">
+<h3>И ещё одна вещь</h3>
+<p>Есть кое-что важнее всего технического.</p>
+<p>Перед тем как подключиться — возьми две-три минуты для себя.</p>
+<p>Не листай телефон. Не отвечай на сообщения. Просто посиди тихо и почувствуй, как ты сейчас.</p>
+<p>Ты идёшь на разговор о важном. Дай себе момент, чтобы настроиться.</p>
+<p style="margin-bottom:0">Это маленькое действие меняет качество всего, что будет дальше.</p>
+</div>
+
+<div class="cnt" id="cnt"></div>
+
+<div class="fin" id="fin">
+<h3>Всё готово</h3>
+<p style="margin-bottom:0">Больше ничего делать не надо. До встречи.</p>
+</div>
+
+<p class="kwMuted" style="margin-top:30px;text-align:center">Вопросы — на почту<br><strong>sergeykosovmrpl@mail.ru</strong></p>
+
+<p style="text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid var(--border)">
+<a href="https://a59413s2.autoweboffice.ru/l/podgotovkap1" style="color:var(--navy-mid);font-size:16px">← Ко всем шагам подготовки</a></p>
+</div>
+<script>
+/* Дата и время встречи.
+   Вариант 1: подставить вручную ниже.
+   Вариант 2: передать в ссылке — index.html?d=15.09.2026&t=14:00
+   Если ничего не передано, подставляется сегодняшняя дата. */
+(function(){
+  const p=new URLSearchParams(location.search);
+  const now=new Date();
+  const d=p.get('d')||now.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
+  const t=p.get('t')||now.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+  const link=p.get('l')||'';
+  document.body.innerHTML=document.body.innerHTML
+    .split('[дата]').join(d).split('[время]').join(t);
+  if(link){
+    document.querySelectorAll('a').forEach(a=>{
+      if(a.textContent.trim()==='[ссылка]'){a.href=link;a.textContent=link;}
+    });
+  }
+})();
+</script>
+<script>
+const boxes=[...document.querySelectorAll('.kwItem input')];
+boxes.forEach(b=>{
+  try{if(localStorage.getItem('kosov_pam_'+b.dataset.k)==='1'){b.checked=true;b.closest('.kwItem').classList.add('on')}}catch(e){}
+});
+function t(el){
+  setTimeout(()=>{
+    const b=el.querySelector('input');
+    el.classList.toggle('on',b.checked);
+    try{localStorage.setItem('kosov_pam_'+b.dataset.k,b.checked?'1':'0')}catch(e){}
+    upd();
+  },0);
+}
+function upd(){
+  const n=boxes.filter(b=>b.checked).length, all=boxes.length;
+  document.getElementById('cnt').textContent=n===0?'':'Отмечено '+n+' из '+all;
+  const done=n===all;
+  document.getElementById('fin').style.display=done?'block':'none';
+  try{localStorage.setItem('kosov_step4',done?'done':'')}catch(e){}
+}
+upd();
+</script>
+</body>
+</html>
